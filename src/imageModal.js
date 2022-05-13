@@ -10,40 +10,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import CancelIcon from '@mui/icons-material/Cancel';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import { grey } from '@mui/material/colors';
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-};
-
-const modalCss = {
-    borderRadius:"10px",
-    boxShadow: 24,
-    background:"#eee"
-}
-
-const borderTops = {
-    borderTop:"0.1px solid #aaa"
-}
-
-const posBottomRight = {
-    position:"absolute",
-    top: '92%',
-    left: '92%',
-}
-
-const posTopRight = {
-    position:"absolute",
-    top: '-2%',
-    left: '94%',
-    zIndex:"100"
-}
-
-const marginRight = {
-    marginRight:"5px",
-}
+import CustomCss from './customCss';
 
 const textDecNone ={textDecoration:"none"}
 
@@ -68,7 +35,7 @@ export default function BasicModal(props) {
                 <div>
                     <InstagramIcon color="secondary" fontSize='small'/>
                 </div>
-                <div style={marginRight}>
+                <div style={CustomCss.marginRight}>
                     <a href={"https://instagram.com/"+props.data.ig} style={textDecNone} target="_blank">
                         <Typography variant='body1' color="gray">
                         {"/"+props.data.ig}
@@ -109,15 +76,15 @@ export default function BasicModal(props) {
 
         sx={{border:"none"}}
       >
-        <Container sx={style} maxWidth="sm">
-            <Card sx={modalCss}>
-                <CancelIcon sx={posTopRight} role="button" onClick={props.closeHandle}/>
+        <Container sx={CustomCss.style} maxWidth="sm">
+            <Card sx={CustomCss.modalCss}>
+                <CancelIcon sx={CustomCss.posTopRight} role="button" onClick={props.closeHandle}/>
                 <CardMedia style={{height:"500px", backgroundSize: "contain", position:"relative"}} image={props.data.imgUrl}
                 title="Image1"
                 >
-                    <OpenWithIcon sx={posBottomRight} color="primary" fontSize="medium" role="button" onClick={()=>downloadImage(props.data.downloadUrl, props.data.id)}/>
+                    <OpenWithIcon sx={CustomCss.posBottomRight} color="primary" fontSize="medium" role="button" onClick={()=>downloadImage(props.data.downloadUrl, props.data.id)}/>
                 </CardMedia>
-                <CardContent sx={borderTops} style={{paddingBottom:"10px"}}>
+                <CardContent sx={CustomCss.borderTops} style={{paddingBottom:"10px"}}>
                     <Stack direction="row"  spacing={1} sx={{mb:2}}>
                         <div>
                             <Avatar alt="Remy Sharp" src={props.data.usrImg} />
