@@ -20,14 +20,19 @@ const downloadImage = (url, id)=>{
 
 export default function BasicModal(props) {
 
+    // Checking if name is available or not in the fetch API result
     if(props.data.name)
         props.data.name=props.data.name.split(" ").join("_")
     else 
         props.data.name = "User_Name"
 
+    // Social handles and description of the artist. if not available set them to empty 
+    //string
     var insta="";
     var twitter = ""
     var desc = "..."
+
+    // Checking for instagram
     if(props.data.ig != null){
         insta =                      
 
@@ -44,6 +49,7 @@ export default function BasicModal(props) {
                 </div>        
             </>
     }
+    // checking for twitter
     if(props.data.twitter != null){
         twitter = 
         <>
@@ -60,6 +66,7 @@ export default function BasicModal(props) {
         </>          
     }
 
+    // checking for description
     if(props.data.desc){
         desc = props.data.desc
     }
